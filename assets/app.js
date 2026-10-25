@@ -145,7 +145,7 @@
     frame = requestAnimationFrame(draw);
   }
   function syncSnow() { if (canAnimate() && !frame) { lastTime = 0; frame = requestAnimationFrame(draw); } else if (!canAnimate() && frame) { cancelAnimationFrame(frame); frame = 0; } }
-  function setPaused(value) { paused = value; root.classList.toggle('motion-paused',paused); toggle.setAttribute('aria-pressed',String(paused)); toggle.querySelector('.motion-label').textContent = paused ? '動きを再開する' : '動きを止める'; toggle.querySelector('span:first-child').textContent = paused ? '▷' : 'Ⅱ'; syncSnow(); }
+  function setPaused(value) { paused = value; root.classList.toggle('motion-paused',paused); toggle.setAttribute('aria-pressed',String(paused)); toggle.querySelector('.motion-label').textContent = paused ? '動きを再開する' : '動きを止める'; toggle.querySelector('span:first-child').textContent = paused ? '▷' : 'Ⅱ'; syncSnow(); window.dispatchEvent(new Event('festival:motionchange')); }
   toggle.addEventListener('click', () => setPaused(!paused));
   if (ctx) { resizeSnow(); window.addEventListener('resize',resizeSnow,{passive:true}); if ('IntersectionObserver' in window) new IntersectionObserver(entries => {snowVisible = entries[0].isIntersecting; syncSnow();}).observe(document.querySelector('.hero')); document.addEventListener('visibilitychange',syncSnow); syncSnow(); }
   reduced.addEventListener('change', () => { if (reduced.matches) { root.classList.remove('motion-ready'); revealObserver?.disconnect(); } syncSnow(); });
