@@ -1,0 +1,80 @@
+/* Rounded UI and interaction motion. Typography and event content are unchanged. */
+:root{--round-photo:30px;--round-card:26px;--round-control:999px;--motion-ease:cubic-bezier(.22,1,.36,1)}
+.festival-v3 img,.festival-v3 picture,.festival-v3 .image-zoom,.festival-v3 .play-photo{border-radius:var(--round-photo)}
+.festival-v3 .hero,.festival-v3 .lantern,.festival-v3 .closing{margin:12px 16px;border-radius:36px;overflow:hidden;isolation:isolate}
+.festival-v3 .hero-picture,.festival-v3 .hero-picture img,.festival-v3 .lantern-picture,.festival-v3 .closing>img{border-radius:inherit}
+.festival-v3 .hero-shade,.festival-v3 .lantern-shade,.festival-v3 .closing-shade{border-radius:inherit}
+.festival-v3 .overview-photo img,.festival-v3 .access-landscape,.festival-v3 .story-photo,.festival-v3 .plan-visual{border-radius:var(--round-photo);overflow:hidden}
+.festival-v3 .play-photo{overflow:hidden;transform:none;box-shadow:0 14px 38px #143f5314}
+.festival-v3 .plan-panel,.festival-v3 .option-card,.festival-v3 .reservation-status,.festival-v3 .draft-notice{border-radius:var(--round-card);overflow:hidden}
+.festival-v3 .option-card{background:#fff;box-shadow:0 6px 28px #143f5308}
+.festival-v3 .option-copy{padding:24px}
+.festival-v3 .option-cutout{overflow:visible}
+.festival-v3 .option-cutout img{padding:8px}
+.festival-v3 .button,.festival-v3 button,.festival-v3 .text-link,.festival-v3 .hero-link,.festival-v3 .desktop-nav a,.festival-v3 .scroll-cue{border-radius:var(--round-control)}
+.festival-v3 .text-link{padding:13px 20px;border:1px solid #143f532b;gap:25px}
+.festival-v3 .hero-link{padding:10px 15px 10px 20px;border:1px solid #ffffff80;background:#143f531f}
+.festival-v3 .duration-selector{border-radius:var(--round-control);padding:5px;gap:6px;overflow:hidden;background:#edf1ef}
+.festival-v3 .duration-selector label,.festival-v3 .duration-selector label span{border-radius:var(--round-control);border:0;transition:background .3s,color .3s,box-shadow .3s,transform .3s var(--motion-ease)}
+.festival-v3 .duration-selector input:checked+span{box-shadow:0 4px 12px #143f5320}
+.festival-v3 .plan-tags span,.festival-v3 .lantern-label,.festival-v3 .capacity small{border-radius:var(--round-control)}
+.festival-v3 .header.scrolled{top:10px;left:16px;right:16px;border-radius:24px;box-shadow:0 8px 30px #143f5312}
+.festival-v3 .desktop-nav a{padding:8px 12px;transition:background .3s,color .3s,transform .3s}
+.festival-v3 .header.scrolled .desktop-nav a{padding:8px 12px}
+.festival-v3 .header.scrolled .desktop-nav a[aria-current]{background:#143f530b}
+.festival-v3 .side-reserve{right:12px;border-radius:var(--round-control);padding:24px 16px 20px;box-shadow:0 8px 30px #143f5330}
+.festival-v3 .faq-list details{border:1px solid #143f531c;border-radius:22px;background:#fff;margin-bottom:14px;transition:box-shadow .3s,border-color .3s}
+.festival-v3 .faq-list summary{padding:22px 25px;border-radius:22px;transition:background .25s}
+.festival-v3 .faq-list details[open]{border-color:#a958204d;box-shadow:0 10px 30px #143f5309}
+.festival-v3 .faq-answer{padding:0 25px 25px}
+.festival-v3 .menu-dialog,.festival-v3 .policy-dialog{border-radius:28px}
+.festival-v3 .menu-dialog{margin:16px;width:calc(100% - 32px);height:calc(100% - 32px);max-height:calc(100% - 32px)}
+.festival-v3 .menu-dialog nav a{border-radius:18px;transition:background .25s,transform .3s}
+.festival-v3 dialog[open]{animation:rounded-dialog-in .38s var(--motion-ease) both}
+.festival-v3 dialog[open]::backdrop{animation:rounded-backdrop-in .3s ease both}
+.festival-v3 .mobile-booking{left:12px;right:12px;bottom:max(10px,env(safe-area-inset-bottom));border:1px solid #143f531a;border-radius:24px;padding:12px 16px;box-shadow:0 10px 36px #143f5324}
+.festival-v3 .mobile-booking:not(.visible){transform:translateY(calc(100% + 40px))}
+.festival-v3 .mobile-booking.visible{transform:translateY(0)}
+.festival-v3 .button,.festival-v3 .side-reserve,.festival-v3 .hero-link,.festival-v3 .text-link{transition:transform .35s var(--motion-ease),background .3s,box-shadow .35s;position:relative;isolation:isolate}
+.festival-v3 .side-reserve,.festival-v3 .hero-link,.festival-v3 .menu-button,.festival-v3 .motion-toggle{overflow:hidden}
+.festival-v3 .side-reserve{position:fixed}
+.festival-v3 .button:active,.festival-v3 .hero-link:active,.festival-v3 .text-link:active{transform:scale(.97)}
+.festival-v3 .side-reserve:active{transform:translateY(-50%) scale(.96)}
+.festival-v3 .button-ripple{position:absolute!important;border-radius:50%!important;pointer-events:none;background:#ffffff59;z-index:0!important;opacity:0}
+html.motion-ready .festival-v3 .reveal{transition-delay:var(--motion-delay,0ms)}
+.festival-v3 .overview-photo img,.festival-v3 .image-zoom img{transition:transform .8s var(--motion-ease),filter .6s}
+.festival-v3 .price-changing{animation:rounded-price-in .4s var(--motion-ease)}
+@media(hover:hover) and (pointer:fine){
+ .festival-v3 .button:hover,.festival-v3 .text-link:hover,.festival-v3 .hero-link:hover{transform:translateY(-3px);box-shadow:0 9px 24px #143f5320}
+ .festival-v3 .side-reserve:hover{transform:translateY(calc(-50% - 4px));box-shadow:0 12px 34px #143f533d}
+ .festival-v3 .overview-photo:hover img,.festival-v3 .image-zoom:hover img{transform:scale(1.035)}
+ .festival-v3 .option-card,.festival-v3 .overview-features article{transition:transform .45s var(--motion-ease),box-shadow .45s}
+ .festival-v3 .option-card:hover{transform:translateY(-7px);box-shadow:0 16px 36px #143f5315}
+ .festival-v3 .overview-features article:hover{transform:translateY(-4px)}
+ .festival-v3 .header.scrolled .desktop-nav a:hover,.festival-v3 .menu-dialog nav a:hover{background:#143f530b;transform:translateY(-2px)}
+ .festival-v3 .faq-list summary:hover{background:#edf1ef80}
+}
+@keyframes rounded-dialog-in{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes rounded-backdrop-in{from{opacity:0}to{opacity:1}}
+@keyframes rounded-price-in{from{opacity:.4;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+@media(max-width:1180px){.festival-v3 .desktop-nav{gap:10px}.festival-v3 .desktop-nav a{padding:8px}.festival-v3 .header.scrolled .desktop-nav{gap:10px}}
+@media(max-width:760px){
+ :root{--round-photo:24px;--round-card:22px}
+ .festival-v3 .hero,.festival-v3 .lantern,.festival-v3 .closing{margin:8px;border-radius:28px}
+ .festival-v3 .hero-content{left:22px;width:calc(100% - 44px)}
+ .festival-v3 .hero-bottom{left:22px;right:22px}.festival-v3 .hero-note{left:22px}
+ .festival-v3 .hero-title-line{font-size:55px}.festival-v3 .hero-title-last{font-size:38px}
+ .festival-v3 .header.scrolled{left:8px;right:8px;top:8px;border-radius:20px}
+ .festival-v3 .side-reserve{right:6px;min-width:42px;padding:18px 9px 15px;border-radius:999px}
+ .festival-v3 .option-card{grid-template-columns:39% 61%;overflow:hidden}.festival-v3 .option-copy{padding:18px 14px 18px 12px}
+ .festival-v3 .option-card>.option-cutout{width:125%;margin-left:-15%}
+ .festival-v3 .option-card:not(:has(.option-cutout))>.image-zoom{transform:none;margin:0;height:100%;min-height:230px;border-radius:22px 0 0 22px;box-shadow:none}
+ .festival-v3 .faq-list summary{padding:18px}.festival-v3 .faq-answer{padding:0 18px 22px}
+ .festival-v3 .menu-dialog{margin:10px;width:calc(100% - 20px);height:calc(100% - 20px);max-height:calc(100% - 20px);border-radius:24px}
+ .festival-v3 .mobile-booking{left:8px;right:8px;border-radius:22px}.festival-v3 .mobile-booking .button{padding:11px 18px}
+ .festival-v3 .footer{padding-bottom:140px}
+}
+@media(max-width:360px){.festival-v3 .hero-title-line{font-size:49px}.festival-v3 .hero-title-last{font-size:33px}}
+@media(prefers-reduced-motion:reduce){.festival-v3 *,.festival-v3 *::before,.festival-v3 *::after{animation:none!important;transition:none!important}.festival-v3 .button-ripple{display:none}}
+html.motion-paused .festival-v3 *,html.motion-paused .festival-v3 *::before,html.motion-paused .festival-v3 *::after{animation:none!important;transition:none!important}
+@media print{.festival-v3 .side-reserve{display:none}}
