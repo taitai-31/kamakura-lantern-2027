@@ -1,0 +1,94 @@
+@charset "UTF-8";
+/* KAMAKURA / dome inspired art-direction, not a generic card template. */
+:root{--paper:#fafbfd;--snow:#edf4f8;--ink:#173747;--sub:#536974;--accent:#8a5d45;--curve:50% 50% 7% 7% / 32% 32% 7% 7%}
+body{background:#fafbfd}
+/* Remove visual noise while preserving Meiryo as the only display family */
+body,button,input,select,textarea,.section-heading,.hero h1,.logo-type,.plan-index,.time-list strong{font-family:Meiryo,"メイリオ",sans-serif!important}
+.section{position:relative}
+.section-heading,.hero h1{letter-spacing:-.04em}
+/* Snowy slope connecting landscape and typography; curves echo the kamakura entry */
+.hero{min-height:790px}
+.hero::after{content:"";position:absolute;z-index:2;bottom:-1px;left:-5%;width:110%;height:125px;background:#fafbfd;clip-path:ellipse(57% 56% at 47% 102%);pointer-events:none}
+.hero-image-wrap img{object-position:center 57%;filter:saturate(.88)}
+.hero-grid{z-index:3}
+/* Arch as architectural element: mask main artwork, then place inset over it */
+.about-section{padding-top:135px;padding-bottom:125px;overflow:hidden}
+.about-section::before{content:"";position:absolute;left:-13vw;top:11%;width:23vw;height:23vw;border:1px solid #dce7ec;border-radius:50%;opacity:.52;pointer-events:none}
+.snow-dome-visual{padding:24px 13% 9% 0;overflow:visible;isolation:isolate}
+.snow-dome-visual::before{content:"";position:absolute;left:5%;top:0;width:83%;height:94%;border-radius:var(--curve);background:#e3edf2;transform:rotate(-7deg);z-index:-1}
+.snow-dome-visual .about-image{height:620px;overflow:hidden;border-radius:var(--curve);box-shadow:0 24px 55px #193d4b19;clip-path:inset(0 round var(--curve));transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.snow-dome-visual .about-image img{height:100%;object-fit:cover;object-position:35% center;transition:transform 1.3s ease}
+.snow-dome-visual .about-inset{width:52%;height:32%;bottom:5%;right:-1%;border:9px solid #fafbfd;border-radius:50% 50% 11% 11% / 47% 47% 12% 12%;overflow:hidden;box-shadow:0 19px 42px #0e354c20}
+.snow-dome-visual .about-inset img{object-position:67% center}
+.dome-floating-caption{position:absolute;z-index:4;left:3%;bottom:17%;max-width:54%;padding:17px 23px;border-radius:26px 26px 4px 26px;background:rgba(255,255,255,.91);box-shadow:0 12px 35px #133f5a17;color:#2c4b55;font-size:13px;font-weight:700;letter-spacing:.02em;backdrop-filter:blur(12px);pointer-events:none}
+.about-copy{padding-left:2%}.about-copy .section-heading{line-height:1.75}
+/* Scenic interlude: one architectural curve, not another rectangular background block */
+.dome-panorama{margin:0 auto;width:min(1510px,calc(100% - 36px));height:670px;border-radius:46% 46% 18px 18px / 29% 29% 18px 18px;overflow:hidden;box-shadow:0 28px 75px #163b5024;background:#dbe9f3}
+.dome-panorama>img{height:100%;object-fit:cover;object-position:center 58%;filter:saturate(.9)}
+.dome-panorama .winter-panorama-shade{background:linear-gradient(0deg,rgba(13,35,52,.56),transparent 54%)}
+.dome-panorama .winter-panorama-inner{padding-bottom:56px}
+.dome-panorama .winter-panorama-inner p{font-size:clamp(31px,3.1vw,50px);letter-spacing:-.04em}
+.dome-panorama-tag{position:absolute;z-index:2;top:44%;right:4%;color:white;font-size:10px;letter-spacing:.16em;text-shadow:0 2px 14px #1238}
+/* Photo groups with purposeful breathing room */
+.times-section{padding-top:128px;padding-bottom:115px;overflow:hidden}
+.times-section::before{content:"";position:absolute;left:-13%;top:10%;width:36vw;height:32vw;transform:rotate(-15deg);border-radius:55% 45% 48% 52%;background:radial-gradient(ellipse at 60% 70%,#f0f6fa 0%,#f9fcfd 60%,transparent 80%);pointer-events:none}
+.times-photo-pair{height:330px;margin-top:42px}
+.times-photo--main{width:83%;height:86%;border-radius:46% 46% 8% 8% / 35% 35% 8% 8%;box-shadow:0 16px 35px #122c3c14}
+.times-photo--overlap{width:46%;height:63%;right:-3%;bottom:-4%;border:8px solid #fafbfd;border-radius:46% 46% 12% 12% / 37% 37% 11% 11%}
+/* Story inside one sculpted frame: typography and imagery share the same surface */
+.snow-story-section{padding:55px 0 145px;background:#fafbfd;overflow:hidden}
+.snow-story-wrap{max-width:1192px}
+.snow-story-frame{position:relative;min-height:565px;border-radius:47% 47% 24px 24px / 24% 24% 24px 24px;overflow:hidden;background:#dbe5eb;isolation:isolate;box-shadow:0 28px 80px #15374719}
+.snow-story-image,.snow-story-image img{position:absolute;inset:0;height:100%;width:100%}
+.snow-story-image img{object-fit:cover;object-position:center 59%;transition:transform 1.2s ease}
+.snow-story-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,40,60,.63) 0%,rgba(13,40,60,.18) 45%,transparent 85%);z-index:0;pointer-events:none}
+.snow-story-copy{position:absolute;z-index:1;left:8%;bottom:11%;max-width:490px;color:white;text-shadow:0 3px 20px #10273974}
+.snow-story-copy h2{font-size:clamp(29px,3.2vw,47px);line-height:1.7;margin:0 0 11px;font-weight:700;letter-spacing:-.045em}
+.snow-story-copy p{font-size:14px;line-height:2.2;margin:0;max-width:420px}
+/* Access uses a high arch, with a smaller curved detail */
+.access-section{overflow:hidden}
+.access-image-block{padding:7% 13% 10% 0}
+.access-image{border-radius:46% 46% 7% 7% / 28% 28% 7% 7%;overflow:hidden;box-shadow:0 20px 55px #1b394b1c}
+.access-inset{border-radius:48% 48% 10% 10% / 30% 30% 10% 10%;box-shadow:0 16px 39px #18384623}
+/* Reserve cards become two shared panels that share a single rounded canopy */
+.reserve-section{background:#edf3f6;padding-top:120px;padding-bottom:145px;overflow:hidden}
+.reserve-section::before{content:"";position:absolute;pointer-events:none;left:-10%;right:-10%;top:-105px;height:160px;background:#fafbfd;border-radius:0 0 50% 50% / 0 0 90% 90%}
+.reserve-card-grid{border:0;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.reserve-option{padding:40px!important;min-height:0;border:1px solid #d4e0e5!important;border-radius:47% 47% 18px 18px / 18% 18% 18px 18px;background:#fff;box-shadow:0 14px 44px #1537470e}
+.reserve-option+.reserve-option{border-left:1px solid #d4e0e5}
+/* Deliberate motion: tilt is interaction-only, scroll reveals stay gentle */
+@media(hover:hover) and (pointer:fine){.snow-story-frame:hover .snow-story-image img{transform:scale(1.035)}.snow-dome-visual:hover .about-image img{transform:scale(1.03)}}
+@media(max-width:910px){.hero{min-height:710px}.snow-dome-visual .about-image{height:485px}.snow-dome-visual .about-inset{border-width:5px}.dome-floating-caption{font-size:11px;padding:12px 14px}.dome-panorama{height:490px}.snow-story-frame{min-height:450px}.snow-story-section{padding-bottom:95px}}
+@media(max-width:670px){
+ .hero{min-height:680px}.hero::after{height:72px;bottom:-1px;clip-path:ellipse(70% 57% at 50% 100%)}
+ .about-section{padding-top:85px;padding-bottom:85px}
+ .snow-dome-visual{padding:17px 9% 12% 1%}
+ .snow-dome-visual::before{left:5%;top:0;width:80%;height:85%}
+ .snow-dome-visual .about-image{height:auto;aspect-ratio:4/5;max-height:none;border-radius:48% 48% 5% 5% / 28% 28% 5% 5%;clip-path:none}
+ .snow-dome-visual .about-image img{object-position:40% center}
+ .snow-dome-visual .about-inset{bottom:4%;right:0;width:50%;height:37%;border-width:5px}
+ .dome-floating-caption{left:2%;bottom:19%;font-size:10px;max-width:58%;padding:10px 12px}
+ .dome-panorama{width:calc(100% - 14px);height:520px;border-radius:48% 48% 14px 14px / 20% 20% 14px 14px}
+ .dome-panorama>img{object-position:64% center}
+ .dome-panorama-tag{top:30%;right:7%;font-size:8px}
+ .dome-panorama .winter-panorama-inner{padding-bottom:45px}
+ .dome-panorama .winter-panorama-inner p{font-size:30px}
+ .times-section{padding-top:78px;padding-bottom:70px}
+ .times-photo-pair{width:100%;height:270px;margin:20px 0 24px}
+ .times-photo--main{width:82%;height:85%}
+ .times-photo--overlap{width:52%;height:64%;right:0;bottom:0;border-width:5px}
+ .snow-story-section{padding:36px 0 95px}
+ .snow-story-frame{min-height:500px;border-radius:45% 45% 17px 17px / 19% 19% 17px 17px}
+ .snow-story-image img{object-position:36% center}
+ .snow-story-frame::after{background:linear-gradient(0deg,rgba(11,34,49,.74) 0%,rgba(11,34,49,.22) 56%,transparent 75%)}
+ .snow-story-copy{left:7%;right:7%;bottom:8%;max-width:none}
+ .snow-story-copy h2{font-size:27px;line-height:1.65}
+ .snow-story-copy p{font-size:12px}
+ .access-image-block{height:350px;min-height:0}
+ .reserve-section{padding-top:83px;padding-bottom:85px}
+ .reserve-section::before{top:-58px;height:82px}
+ .reserve-card-grid{grid-template-columns:1fr;gap:15px}
+ .reserve-option{padding:31px 25px!important;border-radius:45% 45% 17px 17px / 17% 17% 17px 17px;min-height:0}
+ .reserve-option+.reserve-option{border-top:1px solid #d4e0e5}
+}
+@media(prefers-reduced-motion:reduce){.snow-story-image img,.snow-dome-visual .about-image img{transition:none!important}}
