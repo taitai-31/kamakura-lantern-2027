@@ -1,6 +1,27 @@
 (() => {
   "use strict";
   const root = document.documentElement;
+  // When the dedicated snow-hut checkout site is ready, set its real HTTPS URL here.
+  const KAMAKURA_BOOKING_URL = "";
+  const kamakuraButton = document.getElementById("kamakura-booking-button");
+  if (KAMAKURA_BOOKING_URL && kamakuraButton) {
+    try {
+      const url = new URL(KAMAKURA_BOOKING_URL);
+      if (url.protocol === "https:") {
+        const link = document.createElement("a");
+        link.id = kamakuraButton.id;
+        link.className = "reserve-option-link";
+        link.href = url.href;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.innerHTML = kamakuraButton.innerHTML;
+        kamakuraButton.replaceWith(link);
+        const note = link.nextElementSibling;
+        if (note && note.tagName === "SMALL") note.hidden = true;
+      }
+    } catch (_) { /* keep button disabled until valid URL is set */ }
+  }
+
   const controls = Array.from(document.querySelectorAll("[data-lang]"));
   const menuButton = document.getElementById("menu-trigger");
   const menu = document.getElementById("mobile-nav");
