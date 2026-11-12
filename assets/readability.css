@@ -1,0 +1,126 @@
+@charset "UTF-8";
+/* Readability pass: retain the snow-hut curves, but keep all text and controls clear. */
+:root { --ink:#193e4d; --sub:#4c626b; }
+html { scroll-padding-top:92px; }
+body { min-width:320px; overflow-x:clip; font-family:Meiryo,"メイリオ",Arial,sans-serif; }
+body,body button,body a,body input { font-family:Meiryo,"メイリオ",Arial,sans-serif; }
+main { min-width:0; }
+.wrap, .about-grid, .times-grid, .access-grid, .faq-grid,
+.hero-copy, .about-copy, .times-title, .access-content { min-width:0; }
+.section-heading { font-size:clamp(30px,3vw,46px); line-height:1.48; letter-spacing:-.045em; overflow-wrap:normal; word-break:normal; }
+.section-heading em { font-style:normal; }
+.body-copy { max-width:620px; font-size:15px; line-height:2.05; }
+/* Never place decorative shapes or floating labels above live copy. */
+.times-section::before,.about-section::before,.reserve-section::before { display:none!important; }
+.hero::after { pointer-events:none; }
+.about-copy,.access-content,.times-title,.time-list,.faq-grid>div { position:relative; z-index:2; }
+.about-image,.access-image,.times-photo,.snow-story-frame,.dome-panorama { isolation:isolate; }
+.about-copy .section-heading { line-height:1.5; max-width:none; }
+.about-copy .body-copy { max-width:540px; }
+.about-section,.times-section,.access-section { overflow:visible; }
+.about-media,.access-image-block { min-width:0; }
+.hero h1 { font-size:clamp(42px,5.3vw,76px); line-height:1.36; max-width:660px; }
+.hero-intro { max-width:570px; line-height:2; }
+.hero-grid { padding-top:120px; padding-bottom:135px; }
+.snow-story-copy { max-width:min(520px,84%); }
+.snow-story-copy h2 { line-height:1.5; }
+/* Fewer labels, fewer overly decorated headings; information takes precedence. */
+.plan-intro h3 { line-height:1.4; }
+.plan-intro p { line-height:1.8; }
+.time-detail-note { gap:20px; }
+.access-content .section-heading { margin-bottom:22px; }
+.access-content address { max-width:530px; overflow-wrap:anywhere; line-height:1.8; }
+.access-route { max-width:530px; }
+.access-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:6%; align-items:center; }
+.reserve-head h2 { max-width:940px; line-height:1.45; }
+.reserve-option { border-radius:28px!important; padding:32px!important; }
+.reserve-option h3 { line-height:1.5; }
+.faq-items details p { overflow-wrap:anywhere; }
+/* Allow subtle hover, but no scroll-triggered invisible elements. */
+.reveal-item,.motion-active .reveal-item { opacity:1!important; transform:none!important; }
+[data-parallax] { transform:none!important; }
+@media (max-width:900px) {
+ .about-grid,.times-grid,.access-grid,.faq-grid { grid-template-columns:minmax(0,1fr)!important; gap:32px!important; }
+ .times-grid { display:flex!important; flex-direction:column!important; }
+ .times-title,.time-list,.time-detail-note { width:100%; }
+ .access-image-block { width:100%; margin:0!important; min-height:0!important; }
+ .access-content { width:100%; }
+ .reserve-card-grid { grid-template-columns:minmax(0,1fr)!important; }
+ .hero-grid { padding-top:100px; }
+ .about-section,.times-section,.access-section { padding-top:78px; padding-bottom:78px; }
+ .about-media { max-width:560px; }
+ .access-grid .access-content { grid-column:1!important; }
+ .access-grid .access-image-block { grid-column:1!important; }
+}
+@media (max-width:670px) {
+ html { scroll-padding-top:80px; }
+ .wrap { width:calc(100% - 40px)!important; margin-inline:auto; }
+ .section-heading { font-size:clamp(27px,7.1vw,34px)!important; line-height:1.42!important; letter-spacing:-.04em; }
+ .section-heading br,.hero h1 br,.snow-story-copy h2 br,.atmosphere-content h2 br { display:none; }
+ .hero { min-height:590px!important; }
+ .hero-grid { padding:90px 0 108px!important; }
+ .hero h1 { font-size:clamp(35px,9vw,49px)!important; line-height:1.4!important; max-width:340px; }
+ .hero-intro { font-size:13px!important; line-height:1.95!important; max-width:340px; }
+ .hero-actions { gap:15px!important; }
+ .hero-tiny { font-size:11px!important; }
+ .section { padding:65px 0!important; }
+ .about-grid,.times-grid,.access-grid,.faq-grid { gap:25px!important; }
+ .about-media { margin:0!important; padding:0!important; width:100%; }
+ .snow-dome-visual::before { display:none!important; }
+ .snow-dome-visual .about-image { width:100%; aspect-ratio:1.13; height:auto!important; border-radius:44% 44% 14px 14px / 24% 24% 14px 14px; }
+ .snow-dome-visual .about-image img { object-position:50% 50%; }
+ .snow-dome-visual .about-inset { width:33%!important; height:37%!important; right:0!important; bottom:0!important; border:4px solid #fff!important; }
+ .image-footnote { margin-top:10px; font-size:10px; }
+ .about-copy { padding:0!important; }
+ .about-copy .body-copy,.times-title .body-copy { font-size:13px!important; line-height:2!important; }
+ .dome-panorama { height:370px!important; border-radius:36% 36% 14px 14px / 17% 17% 14px 14px; width:calc(100% - 18px)!important; }
+ .dome-panorama .winter-panorama-inner { padding-bottom:25px; }
+ .dome-panorama .winter-panorama-inner p { font-size:clamp(22px,6.5vw,29px)!important; line-height:1.55; }
+ .plans-heading-row { display:block!important; }
+ .plan-deck { width:100%; }
+ .plan { min-width:0; }
+ .plan-rates strong,.plan-price { white-space:normal; }
+ .times-grid { gap:23px!important; }
+ .times-photo-pair { height:220px!important; margin:24px 0 0!important; }
+ .times-photo--main { height:92%!important; width:80%!important; }
+ .times-photo--overlap { height:60%!important; width:42%!important; }
+ .time-list { min-width:0; }
+ .time-list>div { grid-template-columns:24px minmax(0,1fr) 40px!important; gap:6px!important; padding:17px 0!important; }
+ .time-list strong { white-space:nowrap; font-size:clamp(19px,5.5vw,25px)!important; letter-spacing:-.045em; }
+ .time-list small { font-size:9px!important; }
+ .time-detail-note { display:flex; gap:13px!important; flex-wrap:wrap; }
+ .times-footer { margin-top:22px!important; }
+ .snow-story-section { padding:35px 0 70px!important; }
+ .snow-story-frame { min-height:420px!important; border-radius:40% 40% 16px 16px / 15% 15% 16px 16px; }
+ .snow-story-copy { left:7%!important; right:7%!important; bottom:7%!important; max-width:none!important; }
+ .snow-story-copy h2 { font-size:clamp(23px,6vw,29px)!important; line-height:1.4!important; }
+ .snow-story-copy p { font-size:12px!important; line-height:1.8!important; }
+ .atmosphere-content h2 { font-size:clamp(27px,7.2vw,36px)!important; line-height:1.5!important; }
+ .atmosphere-content small { font-size:11px; line-height:1.8; }
+ .access-section { padding:70px 0!important; }
+ .access-grid { display:flex!important; flex-direction:column!important; align-items:stretch!important; gap:25px!important; }
+ .access-content .section-heading { font-size:clamp(27px,7.1vw,34px)!important; max-width:none!important; }
+ .access-content h3 { margin:12px 0!important; font-size:17px!important; overflow-wrap:anywhere; }
+ .access-content address,.access-route { font-size:13px!important; line-height:1.9!important; width:100%; max-width:none; }
+ .access-image-block { height:280px!important; min-height:0!important; padding:0!important; overflow:visible; }
+ .access-image { height:100%; width:88%; border-radius:42% 42% 12px 12px / 23% 23% 12px 12px; }
+ .access-image img { height:100%; }
+ .access-inset { width:34%!important; height:42%!important; right:0!important; bottom:0!important; border:4px solid #fff!important; }
+ .reserve-section { padding:70px 0!important; }
+ .reserve-head h2 { font-size:clamp(27px,7.2vw,36px)!important; line-height:1.45!important; }
+ .reserve-card-grid { display:grid!important; gap:16px!important; }
+ .reserve-option { padding:25px 22px!important; min-width:0; border-radius:20px!important; }
+ .reserve-option h3 { font-size:21px!important; }
+ .reserve-option-link { max-width:100%; white-space:normal; text-align:center; }
+ .faq-grid { display:grid!important; }
+ .faq-items { min-width:0; }
+ .faq-items summary { overflow-wrap:anywhere; }
+}
+@media (max-width:359px) {
+ .wrap { width:calc(100% - 30px)!important; }
+ .time-list strong { font-size:18px!important; }
+ .hero h1 { font-size:33px!important; }
+}
+@media (prefers-reduced-motion:reduce) {
+ * { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+}
