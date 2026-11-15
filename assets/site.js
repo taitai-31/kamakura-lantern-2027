@@ -26,12 +26,12 @@
   const menuButton = document.getElementById("menu-trigger");
   const menu = document.getElementById("mobile-nav");
   const titles = {
-    ja: "南会津町 かまくら・ランタン祭り2027 | KAMAKURA & LANTERN",
-    en: "Minamiaizu Kamakura & Lantern Festival 2027 | Hot Pot Plans"
+    ja: "会津山村リゾート かまくら・竹ランタン祭り2027",
+    en: "Aizu Sanson Resort · Kamakura & Bamboo Lantern Festival 2027"
   };
   const descriptions = {
-    ja: "南会津町かまくら・ランタン祭り2027。雪のかまくらで鍋を囲む冬の体験。3つの鍋プランと料金をご案内。予約・決済は専用サイトにて。",
-    en: "Enjoy hot pot inside a snow hut in Minamiaizu, Fukushima. Explore three set plans and prices. Reservations and payment will be handled on a separate booking website."
+    ja: "南会津の雪のかまくらで、温かい鍋を。75分のかまくら体験とコテージA棟の宿泊をそれぞれご案内。",
+    en: "Enjoy a 75-minute snow hut hot pot experience in Minamiaizu, or book a stay in Cottage A at Aizu Sanson Resort."
   };
   const switchLanguage = (lang, save = true) => {
     if (lang !== "ja" && lang !== "en") return;
