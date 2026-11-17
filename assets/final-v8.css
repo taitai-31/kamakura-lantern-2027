@@ -80,3 +80,37 @@ body{font-family:Meiryo,'メイリオ',sans-serif}
  .reserve-section-v7 .reserve-row-link .reserve-option-link{width:100%;font-size:13px}
 }
 @media(prefers-reduced-motion:reduce){.hero-video{display:none!important}}
+
+/* v9: Desktop reservation cards — prevent the hidden index from consuming a grid track.
+   The two visible elements must occupy the two visible columns explicitly. */
+.reserve-section-v7 .reserve-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(260px,350px);
+  align-items:center;
+  column-gap:clamp(28px,5vw,80px);
+  padding:34px clamp(24px,3.5vw,48px);
+  margin:20px 0;
+  border:1px solid #dce7eb;
+  border-radius:28px;
+  background:#fff;
+  box-shadow:0 8px 34px rgba(28,67,81,.045);
+}
+.reserve-section-v7 .reserve-row-number{display:none!important}
+.reserve-section-v7 .reserve-row-main{grid-column:1;grid-row:1;min-width:0;overflow-wrap:normal;word-break:normal}
+.reserve-section-v7 .reserve-row-main h3{font-size:clamp(22px,2.1vw,30px);line-height:1.45;letter-spacing:-.025em;margin:0 0 12px;word-break:keep-all;overflow-wrap:anywhere}
+.reserve-section-v7 .reserve-row-main p{font-size:14px;line-height:1.85;margin:0 0 10px;max-width:39em}
+.reserve-section-v7 .reserve-row-hint{font-size:12px;line-height:1.7;display:block}
+.reserve-section-v7 .reserve-row-link{grid-column:2;grid-row:1;min-width:0;gap:12px}
+.reserve-section-v7 .reserve-row-link .reserve-option-link{min-height:54px;display:flex;justify-content:center;padding:14px 20px!important;font-size:14px!important;line-height:1.5;white-space:normal}
+.reserve-section-v7 .reserve-row-link small{font-size:11px;line-height:1.75}
+@media(max-width:850px){
+  .reserve-section-v7 .reserve-row{grid-template-columns:minmax(0,1fr);row-gap:23px;padding:27px 26px;margin:18px 0;border-radius:24px}
+  .reserve-section-v7 .reserve-row-main{grid-column:1;grid-row:1}
+  .reserve-section-v7 .reserve-row-link{grid-column:1;grid-row:2;margin-top:0}
+  .reserve-section-v7 .reserve-row-link .reserve-option-link{font-size:13px!important}
+}
+@media(max-width:480px){
+  .reserve-section-v7 .reserve-row{padding:24px 19px;row-gap:19px;border-radius:21px}
+  .reserve-section-v7 .reserve-row-main h3{font-size:22px}
+  .reserve-section-v7 .reserve-row-main p{font-size:12px}
+}
