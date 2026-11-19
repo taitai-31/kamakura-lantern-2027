@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" role="img" aria-label="かまくらとランタンのシンボル">
+<path d="M13 90c0-31 19.5-57 47-57s47 26 47 57" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+<path d="M34 90c0-18 9.5-33 26-33s26 15 26 33" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+<path d="M54 73h12v17H54z" fill="#F5BA65"/>
+<path d="M60 64v7m-12 2h24M48 73l4-8h16l4 8v17H48V73Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+<path d="M17 90h86" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+<circle cx="16" cy="34" r="3" fill="currentColor"/><circle cx="34" cy="20" r="2" fill="currentColor"/><circle cx="88" cy="21" r="3" fill="currentColor"/><circle cx="107" cy="40" r="2" fill="currentColor"/>
+</svg>

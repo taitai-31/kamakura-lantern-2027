@@ -1,77 +1,19 @@
-(() => {
-  "use strict";
-  const root = document.documentElement;
-  // When the dedicated snow-hut checkout site is ready, set its real HTTPS URL here.
-  const KAMAKURA_BOOKING_URL = "";
-  const kamakuraButton = document.getElementById("kamakura-booking-button");
-  if (KAMAKURA_BOOKING_URL && kamakuraButton) {
-    try {
-      const url = new URL(KAMAKURA_BOOKING_URL);
-      if (url.protocol === "https:") {
-        const link = document.createElement("a");
-        link.id = kamakuraButton.id;
-        link.className = "reserve-option-link";
-        link.href = url.href;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.innerHTML = kamakuraButton.innerHTML;
-        kamakuraButton.replaceWith(link);
-        const note = link.nextElementSibling;
-        if (note && note.tagName === "SMALL") note.hidden = true;
-      }
-    } catch (_) { /* keep button disabled until valid URL is set */ }
-  }
-
-  const controls = Array.from(document.querySelectorAll("[data-lang]"));
-  const menuButton = document.getElementById("menu-trigger");
-  const menu = document.getElementById("mobile-nav");
-  const titles = {
-    ja: "会津山村リゾート かまくら・竹ランタン祭り2027",
-    en: "Aizu Sanson Resort · Kamakura & Bamboo Lantern Festival 2027"
-  };
-  const descriptions = {
-    ja: "南会津の雪のかまくらで、温かい鍋を。75分のかまくら体験とコテージA棟の宿泊をそれぞれご案内。",
-    en: "Enjoy a 75-minute snow hut hot pot experience in Minamiaizu, or book a stay in Cottage A at Aizu Sanson Resort."
-  };
-  const switchLanguage = (lang, save = true) => {
-    if (lang !== "ja" && lang !== "en") return;
-    root.lang = lang;
-    document.title = titles[lang];
-    const description = document.querySelector('meta[name="description"]');
-    if (description) description.setAttribute("content", descriptions[lang]);
-    controls.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.lang === lang)));
-    if (menuButton) menuButton.setAttribute("aria-label", lang === "en" ? "Toggle menu" : "メニューを開閉");
-    if (save) {
-      try { localStorage.setItem("kamakura-language", lang); } catch (_) { /* storage may be disabled */ }
-    }
-  };
-  let initial = "ja";
-  try {
-    const fromUrl = new URLSearchParams(location.search).get("lang");
-    if (fromUrl === "ja" || fromUrl === "en") initial = fromUrl;
-    else {
-      const stored = localStorage.getItem("kamakura-language");
-      if (stored === "ja" || stored === "en") initial = stored;
-    }
-  } catch (_) { /* keep Japanese default */ }
-  switchLanguage(initial, false);
-  controls.forEach(button => button.addEventListener("click", () => switchLanguage(button.dataset.lang)));
-  if (menuButton && menu) {
-    menuButton.addEventListener("click", () => {
-      const open = menuButton.getAttribute("aria-expanded") !== "true";
-      menuButton.setAttribute("aria-expanded", String(open));
-      menu.hidden = !open;
-    });
-    menu.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
-      menuButton.setAttribute("aria-expanded", "false");
-      menu.hidden = true;
-    }));
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape" && !menu.hidden) {
-        menu.hidden = true;
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.focus();
-      }
-    });
-  }
+(()=>{'use strict';
+const root=document.documentElement,header=document.getElementById('site-header'),menu=document.querySelector('.menu-toggle'),mobileNav=document.getElementById('mobile-nav');
+root.classList.add('js');
+const langFromUrl=new URLSearchParams(location.search).get('lang');
+const initial=(langFromUrl==='ja'||langFromUrl==='en')?langFromUrl:(localStorage.getItem('minamiaizu-lang')||'ja');
+function changeLang(lang){if(!['ja','en'].includes(lang))return;root.lang=lang;document.querySelectorAll('[data-setlang]').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.setlang===lang)));document.title=lang==='ja'?'かまくらランタンフェス 南会津 2027｜会津山村リゾート':'Kamakura Lantern Festival Minamiaizu 2027 | Aizu Sanson Resort';document.querySelector('meta[name="description"]').content=lang==='ja'?'南会津の雪のかまくらで、あたたかな鍋を囲む。かまくら体験とコテージ宿泊をご案内します。':'Explore snow hut dining and a cozy cottage stay in snowy Minamiaizu, Fukushima.';localStorage.setItem('minamiaizu-lang',lang);}
+changeLang(initial);document.querySelectorAll('[data-setlang]').forEach(btn=>btn.addEventListener('click',()=>changeLang(btn.dataset.setlang)));
+function closeMenu(){menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open menu');mobileNav.inert=true;document.body.classList.remove('nav-open')}
+menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!open));menu.setAttribute('aria-label',open?'Open menu':'Close menu');mobileNav.inert=open;document.body.classList.toggle('nav-open',!open)});mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+const onScroll=()=>header.classList.toggle('is-scrolled',scrollY>35);window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const intro=document.getElementById('intro');if(intro){if(reduce||sessionStorage.getItem('minamiaizu-intro')){intro.remove()}else{sessionStorage.setItem('minamiaizu-intro','1');window.setTimeout(()=>{intro.classList.add('is-exiting');window.setTimeout(()=>intro.remove(),600)},960)}}
+const film=document.querySelector('.hero__film');if(reduce&&film){film.pause();film.setAttribute('preload','none')}
+if(!reduce){const obs=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');obs.unobserve(entry.target)}}),{threshold:0.13,rootMargin:'0px 0px -24px 0px'});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('is-visible'));
+const snow=document.getElementById('snow-layer');if(snow&&!reduce){for(let i=0;i<25;i++){const s=document.createElement('i');s.style.setProperty('--x',`${(i*37+17)%100}%`);s.style.setProperty('--delay',`${-(i*2.47)%16}s`);s.style.setProperty('--duration',`${7+(i*7)%11}s`);s.style.setProperty('--size',`${1+(i%3)}px`);snow.appendChild(s)}}
+const track=document.getElementById('gallery-track');document.querySelector('.gallery__prev')?.addEventListener('click',()=>track.scrollBy({left:-Math.max(track.clientWidth*.72,280),behavior:reduce?'instant':'smooth'}));document.querySelector('.gallery__next')?.addEventListener('click',()=>track.scrollBy({left:Math.max(track.clientWidth*.72,280),behavior:reduce?'instant':'smooth'}));
+document.querySelectorAll('.rate').forEach(details=>details.addEventListener('toggle',()=>{if(details.open){document.querySelectorAll('.rate').forEach(other=>{if(other!==details)other.open=false})}}));
+document.querySelectorAll('a[data-track]').forEach(a=>a.addEventListener('click',()=>{if(typeof window.gtag==='function')window.gtag('event','cottage_booking_click',{location:a.dataset.track})}));
 })();
