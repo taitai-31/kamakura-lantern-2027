@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" role="img" aria-label="かまくらとランタンのシンボル">
-<path d="M13 90c0-31 19.5-57 47-57s47 26 47 57" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-<path d="M34 90c0-18 9.5-33 26-33s26 15 26 33" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-<path d="M54 73h12v17H54z" fill="#F5BA65"/>
-<path d="M60 64v7m-12 2h24M48 73l4-8h16l4 8v17H48V73Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-<path d="M17 90h86" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-<circle cx="16" cy="34" r="3" fill="currentColor"/><circle cx="34" cy="20" r="2" fill="currentColor"/><circle cx="88" cy="21" r="3" fill="currentColor"/><circle cx="107" cy="40" r="2" fill="currentColor"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="内側から明かりが灯る雪のかまくらのシンボル">
+<defs><radialGradient id="warm"><stop offset="0" stop-color="#FFE5AB"/><stop offset="1" stop-color="#F0A762"/></radialGradient></defs>
+<path d="M9 95C9 53 31 26 60 26s51 27 51 69Z" fill="#153553"/>
+<path d="M31 95C31 70 43 52 60 52s29 18 29 43Z" fill="#F7F9FD"/>
+<path d="M42 95C42 76 50 64 60 64s18 12 18 31Z" fill="url(#warm)"/>
+<path d="M8 96h104" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+<circle cx="18" cy="31" r="3" fill="#F8FBFF"/><circle cx="95" cy="13" r="2" fill="#F8FBFF"/><circle cx="109" cy="48" r="2.5" fill="#F8FBFF"/>
 </svg>
